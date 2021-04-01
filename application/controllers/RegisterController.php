@@ -1,13 +1,28 @@
 <?php
 
 
+/**
+ * Class RegisterController
+ * @author Rafael Velosa
+ */
 class RegisterController extends MainController{
+
+    /**
+     * Guarda o titulo da pagina
+     * @var string $title
+     */
     public $title = "Register";
 
+    /**
+     * RegisterController constructor.
+     */
     public function __construct(){
         parent::__construct();
     }
 
+    /**
+     * Pagina index
+     */
     public function index(){
         if ($this->loggedIn){
             gotoPage('home/');

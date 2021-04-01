@@ -42,7 +42,7 @@ define('DB_CHARSET', 'utf8');
 // ----------- Configurações de aplicação -------------------------------------------------------------
 
 // define o tamanho maximo que a password deve ter
-define('PASSWORDMAXSIZE', 15);
+define('PASSWORDMAXSIZE', 30);
 
 // define o tamanho minimo que a password deve ter
 define('PASSWORDMINSIZE', 3);

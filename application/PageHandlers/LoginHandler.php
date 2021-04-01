@@ -31,9 +31,9 @@ class LoginHandler extends PageHandler{
         }
         LoginCore::login($qResult[0]->id);
         if (isset($_POST['nextPage']) && $_POST['nextPage'] != "") {
-            gotoPage($_POST['nextPage'].'?sucess=1');
+            gotoPage($_POST['nextPage'].'?success=1');
             return;
         }
-        gotoPage('?sucess=1');
+        gotoPage('?success=1');
     }
 }

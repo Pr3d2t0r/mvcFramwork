@@ -3,7 +3,6 @@
     session_start();
 
 if ( !defined('DEBUG') || DEBUG === false ) {
-
     // Php para de reportar erros
     error_reporting(0);
 } else {
@@ -11,6 +10,7 @@ if ( !defined('DEBUG') || DEBUG === false ) {
     error_reporting(E_ALL);
 }
 
+/*Zona de requires*/
 require APPLICATIONPATH . '/libraries/autoloader.php';
 require APPLICATIONPATH . '/libraries/util.php';
 require_once APPLICATIONPATH . '/controllers/HomeControler.php';
@@ -20,6 +20,8 @@ require_once APPLICATIONPATH . '/controllers/adminController.php';
 require_once APPLICATIONPATH . '/pageHandlers/LoginHandler.php';
 require_once APPLICATIONPATH . '/pageHandlers/HomeHandler.php';
 require_once APPLICATIONPATH . '/pageHandlers/RegisterHandler.php';
+/*end*/
+
 $app = new Application();
 $app->router->get('/', new HomeControler);
 $app->router->get('home/', new HomeControler);

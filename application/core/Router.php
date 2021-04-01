@@ -6,6 +6,11 @@
  * @author Rafael Velosa
  */
 class Router{
+
+    /**
+     * Guarda as rotas
+     * @var array
+     */
     private array $routes = [];
 
     /**

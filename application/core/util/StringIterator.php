@@ -1,10 +1,28 @@
 <?php
 
 
+/**
+ * Class StringIterator
+ * @author Rafael Velosa
+ */
 class StringIterator implements IIterator{
 
+    /**
+     * Guarda se é reverso ou nao
+     * @var bool
+     */
     private bool $reverse;
+
+    /**
+     * guarda a pos da string
+     * @var int
+     */
     private int $pos = 0;
+
+    /**
+     * guarda uma string
+     * @var string
+     */
     private string $str;
 
     /**

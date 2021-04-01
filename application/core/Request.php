@@ -6,9 +6,29 @@
  * @author Rafael Velosa
  */
 class Request{
+
+    /**
+     * Guarda o nome do controlador
+     * @var string
+     */
     public string $page;
+
+    /**
+     * Guarda a ação
+     * @var string
+     */
     public string $action;
+
+    /**
+     * Guarda os parametros
+     * @var array|null
+     */
     public array|null $parameters;
+
+    /**
+     * Retorna o metodo do pedido
+     * @var string
+     */
     public string $method;
 
     /**

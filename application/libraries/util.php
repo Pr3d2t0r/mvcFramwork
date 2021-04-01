@@ -41,6 +41,11 @@ function filter($array, $callback){
     return $newArray;
 }
 
+/**
+ * retorna uma string reversa
+ * @param $str
+ * @return string
+ */
 function reverseString($str){
     $iterator = new StringIterator($str, reverse: true);
     $newStr = "";

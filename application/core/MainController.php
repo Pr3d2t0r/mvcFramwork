@@ -38,6 +38,20 @@ abstract class MainController extends LoginCore implements Controller{
     public $stylesheet;
 
     /**
+     * Guarda uma msg para o user
+     * @var $msg
+     */
+    public $msg = null;
+
+    /**
+     * MainController constructor.
+     */
+    public function __construct(){
+        parent::__construct();
+        $this->msg = Messages::run($_GET);
+    }
+
+    /**
      * Carega um modelo se este existir
      * @param $modelName
      * @return mixed

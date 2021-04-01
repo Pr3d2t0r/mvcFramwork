@@ -49,9 +49,9 @@ class RegisterHandler extends PageHandler{
         }
         $this->db->insert('user')->values([':username', ':password', ':permissions'], ['username','password','permissions'])->runQuery([':username'=>$username, ':password'=>$this->passwordHasher->encrypt($password),':permissions'=>serialize(['Any'])]);
         if (isset($_POST['nextPage']) && $_POST['nextPage'] != "") {
-            gotoPage($_POST['nextPage'].'?sucess=3');
+            gotoPage($_POST['nextPage'].'?success=3');
             return;
         }
-        gotoPage('login/?sucess=3');
+        gotoPage('login/?success=3');
     }
 }

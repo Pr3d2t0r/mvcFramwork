@@ -11,6 +11,6 @@ class HomeHandler extends PageHandler{
             gotoPage($_POST['nextPage']);
             return;
         }
-        gotoPage($_GET['path'].'?sucess=1');
+        gotoPage($_GET['path'].'?success=1');
     }
 }

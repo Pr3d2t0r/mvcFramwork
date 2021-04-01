@@ -32,6 +32,7 @@ class LoginCore{
         $this->passwordHasher = new PasswordHash();
         $this->loggedIn = $this->isUserLogedIn() != false;
         $this->userInfo = $this->db->getUserInfo($this->isUserLogedIn());
+
     }
 
     /**

@@ -3,6 +3,7 @@
 
 /**
  * Class PageHandler
+ * @author Rafael Velosa
  * Serve Para responder a pedidos POST feitos aos seus respetivos controladores
  */
 abstract class PageHandler{
