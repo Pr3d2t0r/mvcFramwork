@@ -8,7 +8,7 @@ class LoginHandler extends PageHandler{
      * @return mixed
      */
     public function __construct(){
-        $this->db = new Db;
+        $this->model = $this->loadModel('userModel');
         $this->passwordHasher = new PasswordHash();
     }
 
@@ -20,7 +20,7 @@ class LoginHandler extends PageHandler{
         }
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $qResult = $this->db->select(['id', 'password'])->from('user')->where('username=:username')->limit(1)->runQuery([':username'=>$username]);
+        $qResult = $this->model->getByUsername($username);
         if(!isset($qResult[0])) {
             gotoPage($_GET['path'] . '?error=ude');
             return;

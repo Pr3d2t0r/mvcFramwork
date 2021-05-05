@@ -34,4 +34,14 @@ class UserModel extends MainModel{
         }
         return $result;
     }
+
+    public function getByUsername(string $username): ?array{
+        return $this->db->select()->from('user')->where('username=:username')->limit(1)->runQuery([':username'=>$username]);
+    }
+
+    public function insert($username, $password, $hasher=null){
+        if ($hasher === null)
+            $hasher = new PasswordHash();
+        $this->db->insert('user')->values([':username', ':password', ':permissions'], ['username','password','permissions'])->runQuery([':username'=>$username, ':password'=>$hasher->encrypt($password),':permissions'=>serialize(['Any'])]);
+    }
 }

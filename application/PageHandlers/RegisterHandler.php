@@ -6,7 +6,7 @@ class RegisterHandler extends PageHandler{
     public PasswordHash $passwordHasher;
 
     public function __construct(){
-        $this->db = new Db;
+        $this->model = new UserModel();
         $this->passwordHasher = new PasswordHash();
     }
 
@@ -47,7 +47,7 @@ class RegisterHandler extends PageHandler{
             gotoPage($parametros['get']['path'] . '?error=nep');
             return;
         }
-        $this->db->insert('user')->values([':username', ':password', ':permissions'], ['username','password','permissions'])->runQuery([':username'=>$username, ':password'=>$this->passwordHasher->encrypt($password),':permissions'=>serialize(['Any'])]);
+        $this->model->insert($username, $password, $this->passwordHasher);
         if (isset($_POST['nextPage']) && $_POST['nextPage'] != "") {
             gotoPage($_POST['nextPage'].'?success=3');
             return;
