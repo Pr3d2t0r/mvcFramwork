@@ -3,6 +3,7 @@ use bleet;
 create table if not exists user(
     id int(11) primary key auto_increment,
     username varchar(80) not null,
+    email varchar (255),
     password varchar(255) not null,
     permissions longtext not null
 );

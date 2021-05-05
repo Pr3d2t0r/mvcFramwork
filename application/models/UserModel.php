@@ -19,6 +19,14 @@ class UserModel extends MainModel{
         return $this->db->getUserInfo($this->info->id);
     }
 
+    public function getEmail($userId){
+        if (!isset($userId)){
+            include_once APPLICATIONPATH.'/views/includes/404.php';
+            return null;
+        }
+        return $this->db->getUserInfo($userId);
+    }
+
     public function getAll(){
         $result = $this->db->select()->from($this->tableName)->runQuery();
         for ($i=0;$i<count($result);$i++){
