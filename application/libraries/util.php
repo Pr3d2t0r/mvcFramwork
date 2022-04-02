@@ -59,6 +59,21 @@ function reverseString($str){
  * @param $page
  * @return null
  */
-function gotoPage($page){
+function gotoPage($page=''){
     header('Location: ' . HOME_URI.$page);
+}
+
+function chunkArray($array, $nItens=3){
+    $count = 0;
+    $x = 1;
+    $new_arr = [];
+    for ($i = 0; $i < count($array); $i++) {
+        if ($count == $nItens) {
+            $count = 0;
+            $x++;
+        }
+        $new_arr[$x][] = $array[$i];
+        $count++;
+    }
+    return $new_arr;
 }

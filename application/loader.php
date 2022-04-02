@@ -25,10 +25,14 @@ require_once APPLICATIONPATH . '/pageHandlers/RegisterHandler.php';
 $app = new Application();
 $app->router->get('/', new HomeControler);
 $app->router->get('home/', new HomeControler);
+$app->router->post('/', new HomeHandler);
 $app->router->post('home/', new HomeHandler);
+
 $app->router->get('login/', new LoginController);
 $app->router->post('login/', new LoginHandler);
+
 $app->router->get('register/', new RegisterController);
 $app->router->post('register/', new RegisterHandler);
+
 $app->router->get('admin/', new AdminController);
 $app->run();

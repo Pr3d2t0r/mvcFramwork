@@ -49,6 +49,6 @@ class UserModel extends MainModel{
     public function insert($username, $password, $hasher=null){
         if ($hasher === null)
             $hasher = new PasswordHash();
-        $this->db->insert($this->tableName)->values([':username', ':password', ':permissions'], ['username','password', 'email', 'permissions'])->runQuery([':username'=>$username, ':password'=>$hasher->encrypt($password), ':permissions'=>serialize(['Any'])]);
+        $this->db->insert($this->tableName)->values([':username', ':password', ':permissions'], ['username','password', 'permissions'])->runQuery([':username'=>$username, ':password'=>$hasher->encrypt($password), ':permissions'=>serialize(['Any'])]);
     }
 }

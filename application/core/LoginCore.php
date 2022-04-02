@@ -25,13 +25,29 @@ class LoginCore{
     protected Db $db;
 
     /**
+     * Super admin true|false
+     * @var bool
+     */
+    public bool $superAdm;
+
+    /**
+     * Admin true|false
+     * @var bool
+     */
+    public bool $adm;
+
+    /**
      * LoginCore constructor.
      */
     public function __construct(){
         $this->db = new Db;
         $this->passwordHasher = new PasswordHash();
-        $this->loggedIn = $this->isUserLogedIn() != false;
-        $this->userInfo = $this->db->getUserInfo($this->isUserLogedIn());
+        $this->loggedIn = $this->isUserLogedIn() !== false;
+        if ($this->loggedIn) {
+            $this->userInfo = $this->db->getUserInfo($this->isUserLogedIn());
+            $this->superAdm = LoginCore::isSuperAdmin($this->userInfo->id);
+            $this->adm = $this->hasPermissions('Admin', $this->userInfo->permissions);
+        }
     }
 
     /**
@@ -74,6 +90,18 @@ class LoginCore{
         setcookie("loginToken", '0', time() - 3600);
         setcookie("loginToken_", '0', time() - 3600);
 
+    }
+
+    /**
+     * Retor true se for um superadmin e false senao for super admin
+     * @param $id
+     * @return bool
+     */
+    public static function isSuperAdmin($id){
+        $db = new Db;
+        $permissions = $db->select(['permissions'])->from('user')->where("id=:id")->limit(1)->runQuery([':id'=>$id])[0]->permissions;
+        $permissions = unserialize($permissions);
+        return in_array('Superadmin', $permissions);
     }
 
     /**
@@ -120,6 +148,8 @@ class LoginCore{
      * @return bool
      */
     final protected function hasPermissions(string $required = 'Any', array $userPermissions = []){
-         return in_array($required, $userPermissions);
+        if (in_array('Superadmin', $userPermissions)) return true;
+        if ($required !== 'Superadmin' && in_array('Admin', $userPermissions)) return true;
+        return in_array($required, $userPermissions);
     }
 }

@@ -11,7 +11,7 @@ class QueryBuilder implements QueryBuilderInterface{
      * Guarda a query
      * @var string $query
      */
-    protected string $query;
+    protected string $query="";
 
     /**
      * select
@@ -40,6 +40,11 @@ class QueryBuilder implements QueryBuilderInterface{
      */
     public function where(string $exp){
         $this->query .= " where $exp";
+        return $this;
+    }
+
+    public function on(string $exp){
+        $this->query .= " on $exp";
         return $this;
     }
 

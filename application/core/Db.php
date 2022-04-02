@@ -21,7 +21,8 @@ class Db extends QueryBuilder{
      * Retorna uma instancia do PDO (singleton)
      * @return PDO
      */
-    public static function getPDOInstance(){
+    public static function getPDOInstance(): PDO
+    {
         if (!isset(self::$PDOInstance)){
             try {
                 self::$PDOInstance = new PDO("mysql:host=".DB_HOSTNAME.";dbname=".DB_NAME.";charset=".DB_CHARSET, DB_USERNAME, DB_PASSWORD);
@@ -47,10 +48,13 @@ class Db extends QueryBuilder{
      * @param null $query
      * @return array|null
      */
-    public function runQuery($infoArray=[], $query=null){
+    public function runQuery(array $infoArray=[], $query=null): ?array
+    {
         if ($this->query == ""){
             $pdoQuery = $this->pdo->prepare($query);
-            $pdoQuery->execute($infoArray);
+            foreach($infoArray as $key => $value)
+                $pdoQuery->bindValue($key, $value);
+            $pdoQuery->execute();
         }else{
             $pdoQuery= $this->pdo->prepare($this->query);
             foreach($infoArray as $key => $value)
