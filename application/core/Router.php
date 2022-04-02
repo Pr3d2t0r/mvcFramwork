@@ -34,7 +34,7 @@ class Router{
     }
 
     /**
-     * Retorna o respetivo controlador pa pagina
+     * usa o respetivo controlador pa pagina
      * @param Request $request
      * @return null
      */
@@ -42,19 +42,19 @@ class Router{
         if(isset($this->routes[$request->page][$request->method])) {
             if (method_exists($this->routes[$request->page][$request->method], $request->action)) {
                 $this->routes[$request->page][$request->method]->{$request->action}($request->parameters);
-                return;
+                return true;
             }
             if (is_numeric($request->action)){
                 array_unshift($request->parameters, $request->action);
                 $this->routes[$request->page][$request->method]->index($request->parameters);
-                return;
+                return true;
             }
         }
         if(isset($this->routes['404']['get'])){
             $this->routes['404']['get']->index(['errorCode' => '404']);
-            return;
+            return true;
         }
         include_once APPLICATIONPATH."/views/includes/404.php";
-        return;
+        return false;
     }
 }

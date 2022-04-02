@@ -24,7 +24,7 @@ class RegisterHandler extends PageHandler{
                 return;
             }
         }
-        if ($this->db->usernameExists($username)){
+        if ($this->model->usernameExists($username)){
             gotoPage($parametros['get']['path'] . '?error=ue');
             return;
         }

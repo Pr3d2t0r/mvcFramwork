@@ -11,7 +11,7 @@ class LoginController extends MainController{
      * Guarda o titulo da pagina
      * @var string $title
      */
-    public $title = "Login";
+    public string $title = "Login";
 
     /**
      * LoginController constructor.

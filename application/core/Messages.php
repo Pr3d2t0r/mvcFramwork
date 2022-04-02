@@ -36,7 +36,7 @@ class Messages{
     /**
      * Devolve uma msg se ouver
      * @param $get
-     * @return mixed|string|null
+     * @return array|null
      */
     public static function run($get){
         if(isset($get['error']))

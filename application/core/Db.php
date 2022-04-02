@@ -66,18 +66,6 @@ class Db extends QueryBuilder{
     }
 
     /**
-     * Verifica se o username existe
-     * @param $username
-     * @return bool
-     */
-    public function usernameExists($username): bool{
-        $result = $this->select(['id'])->from('user')->where('username=:username')->runQuery([':username'=>$username]);
-        if (isset($result[0]))
-            return true;
-        return false;
-    }
-
-    /**
      * Retorna a informação para um respetivo user
      * @param $id
      * @return mixed|null

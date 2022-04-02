@@ -11,7 +11,7 @@ class RegisterController extends MainController{
      * Guarda o titulo da pagina
      * @var string $title
      */
-    public $title = "Register";
+    public string $title = "Register";
 
     /**
      * RegisterController constructor.

@@ -28,7 +28,7 @@ define('HOME_URI', "http://$_SERVER[HTTP_HOST]".(($_SERVER['SERVER_PORT'] === "8
 define('DB_HOSTNAME', 'localhost');
 
 // Nome da Base de dados
-define('DB_NAME', 'bleet');
+define('DB_NAME', 'mvc');
 
 // Username para aceder ao servidor MYSQL
 define('DB_USERNAME', 'root');

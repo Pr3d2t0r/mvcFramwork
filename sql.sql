@@ -1,5 +1,5 @@
-create database if not exists bleet;
-use bleet;
+create database if not exists mvc;
+use mvc;
 create table if not exists user(
     id int(11) primary key auto_increment,
     username varchar(80) not null,

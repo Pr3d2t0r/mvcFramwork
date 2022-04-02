@@ -16,7 +16,7 @@ class LoginCore{
      * Guarda a info do usuario
      * @var mixed
      */
-    public $userInfo;
+    public mixed $userInfo;
 
     /**
      * Guarda uma instancia da base de dados
@@ -32,7 +32,6 @@ class LoginCore{
         $this->passwordHasher = new PasswordHash();
         $this->loggedIn = $this->isUserLogedIn() != false;
         $this->userInfo = $this->db->getUserInfo($this->isUserLogedIn());
-
     }
 
     /**
@@ -100,6 +99,18 @@ class LoginCore{
         setcookie("loginToken", $token, time() + 60 * 60 * 24 * 7, '/', null, null, true);
         //serve para renovar o token sem que o user tenha que fazer login
         setcookie("loginToken_", '0', time() + 60 * 60 * 24 * 3, '/', null, null, true);
+    }
+
+    /**
+     * Retorna o id do user que esta logado
+     * @return false|int
+     */
+    public static function getUserId(){
+        $db = new Db;
+        if(!isset($_COOKIE['loginToken'])) return false;
+        $qResult = $db->select(['userId'])->from('logintokens')->where('token=:token')->limit(1)->runQuery([':token'=>sha1($_COOKIE['loginToken'])]);
+        if(!isset($qResult[0])) return false;
+        return $qResult[0]->userId;
     }
 
     /**

@@ -39,7 +39,7 @@ class Application{
      */
     public function run(){
         $controller = $this->router->use($this->request);
-        if($controller == false)
+        if($controller === false)
             include_once APPLICATIONPATH.'/views/includes/404.php';
     }
 

@@ -9,39 +9,45 @@ abstract class MainController extends LoginCore implements Controller{
 
     /**
      * Guarda o titulo da pagina
-     * @var $title
+     * @var string $title
      */
-    public $title;
+    public string $title = "Default Title";
 
     /**
      * Guarda o modelo para este controlador se for necessario
-     * @var $model
+     * @var MainModel $model
      */
-    public $model;
+    public MainModel $model;
 
     /**
      * Guarda se é nessesario login por defeito não é nessesario
      * @var bool $login_required
      */
-    public $login_required = false;
+    public bool $login_required = false;
 
     /**
      * Guarda as permissoes nessesarias para entrar nesta pagina
      * @var string $permission_required
      */
-    public $permission_required = 'Any';
+    public string $permission_required = 'Any';
 
     /**
      * Guarda o nome da folha de estilo caso tenha
-     * @var $stylesheet
+     * @var string $stylesheet
      */
-    public $stylesheet;
+    public string $stylesheet = '';
+
+    /**
+     * Guarda o nome do ficheiro script caso tenha
+     * @var string $script
+     */
+    protected string $script = '';
 
     /**
      * Guarda uma msg para o user
-     * @var $msg
+     * @var array | null $msg
      */
-    public $msg = null;
+    public array | null $msg = null;
 
     /**
      * MainController constructor.
