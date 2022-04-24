@@ -18,8 +18,8 @@ class AdminController extends MainController{
             gotoPage("home?error=af");
             return;
         }
-        $this->model = $this->loadModel("userModel");
-        $usersList = (new HtmlDivWrapper($this->model->getAll()))->getHtml(function ($item){
+        $this->loadModel("UserModel", "user_model");
+        $usersList = (new HtmlDivWrapper($this->user_model->getAll()))->getHtml(function ($item){
             return "<div class='box'><ul><li>$item->username</li><li>Permissions => [".implode(', ', $item->permissions)."]</li></ul></div>";
         });
         include_once APPLICATIONPATH.'/views/includes/header.php';

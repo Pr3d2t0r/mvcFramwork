@@ -14,12 +14,6 @@ abstract class MainController extends LoginCore implements Controller{
     public string $title = "Default Title";
 
     /**
-     * Guarda o modelo para este controlador se for necessario
-     * @var MainModel $model
-     */
-    public MainModel $model;
-
-    /**
      * Guarda se é nessesario login por defeito não é nessesario
      * @var bool $login_required
      */
@@ -60,15 +54,19 @@ abstract class MainController extends LoginCore implements Controller{
     /**
      * Carega um modelo se este existir
      * @param $modelName
-     * @return mixed
+     * @param string|null $alias
+     * @return bool
      */
-    public function loadModel($modelName){
+    public function loadModel($modelName, string $alias=null){
         $modelName = ucfirst($modelName);
         $path = APPLICATIONPATH."/models/$modelName.php";
         if (file_exists($path)) {
             require_once $path;
-            if (class_exists($modelName))
-                return new $modelName($this->userInfo);
+            if (class_exists($modelName)) {
+                $model = new $modelName($this->userInfo);
+                $this->{$alias !== null ? $alias : $modelName} = &$model;
+                return true;
+            }
         }
         include_once APPLICATIONPATH.'/views/includes/404.php';
         return false;
