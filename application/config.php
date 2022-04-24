@@ -39,6 +39,10 @@ define('DB_PASSWORD', '');
 // Charset da conexão PDO
 define('DB_CHARSET', 'utf8');
 
+// ----------- System config's ------------------------------------------------------------------------
+
+define("AUTOLOAD_CONTROLLERS", true);
+
 // ----------- Configurações de aplicação -------------------------------------------------------------
 
 // define o tamanho maximo que a password deve ter

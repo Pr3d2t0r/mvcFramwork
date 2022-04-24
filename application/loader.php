@@ -13,13 +13,14 @@ if ( !defined('DEBUG') || DEBUG === false ) {
 /*Zona de requires*/
 require APPLICATIONPATH . '/libraries/autoloader.php';
 require APPLICATIONPATH . '/libraries/util.php';
-require_once APPLICATIONPATH . '/controllers/HomeControler.php';
+//autoload de controllers ativo
+/*require_once APPLICATIONPATH . '/controllers/HomeControler.php';
 require_once APPLICATIONPATH . '/controllers/LoginController.php';
 require_once APPLICATIONPATH . '/controllers/RegisterController.php';
 require_once APPLICATIONPATH . '/controllers/adminController.php';
 require_once APPLICATIONPATH . '/pageHandlers/LoginHandler.php';
 require_once APPLICATIONPATH . '/pageHandlers/HomeHandler.php';
-require_once APPLICATIONPATH . '/pageHandlers/RegisterHandler.php';
+require_once APPLICATIONPATH . '/pageHandlers/RegisterHandler.php';*/
 /*end*/
 
 $app = new Application();
