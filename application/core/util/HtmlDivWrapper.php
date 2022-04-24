@@ -73,10 +73,9 @@ class HtmlDivWrapper{
 
     /**
      * Unset id
-     * @param $id
      * @return $this
      */
-    public function unsetId($id){
+    public function unsetId(){
         $this->id = "";
         return $this;
     }

@@ -10,7 +10,7 @@ interface Controller{
     /**
      * Carega um modelo
      * @param $modelName
-     * @return mixed
+     * @return bool
      */
-    public function loadModel($modelName);
+    public function loadModel($modelName): bool;
 }

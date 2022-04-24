@@ -57,7 +57,7 @@ abstract class MainController extends LoginCore implements Controller{
      * @param string|null $alias
      * @return bool
      */
-    public function loadModel($modelName, string $alias=null){
+    public function loadModel($modelName, string $alias=null):bool{
         $modelName = ucfirst($modelName);
         $path = APPLICATIONPATH."/models/$modelName.php";
         if (file_exists($path)) {
