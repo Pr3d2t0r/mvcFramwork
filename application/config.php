@@ -56,6 +56,11 @@ define('PASSWORDMINSIZE', 3);
  */
 define('USERNAMEREGEXVALIDATOR', '/^[a-zA-Z0-9]([_-](?![_-])|[a-zA-Z0-9]){1,28}[a-zA-Z0-9]$/');
 
+// Linguagem default da app
+// PT ou EN
+// obs.: A não ser que adicione outro ficheiro na pasta libraries
+define('DEFAULT_LANG', 'pt');
+
 // ----------- Fim de configurações de aplicação ------------------------------------------------------
 
 /*

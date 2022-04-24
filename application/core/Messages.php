@@ -20,7 +20,7 @@ class Messages{
      * @return mixed|string|null
      */
     public static function run($get){
-        self::$lang = strtoupper($_COOKIE['lang'] ?? 'pt');
+        self::$lang = strtoupper($_COOKIE['lang'] ?? DEFAULT_LANG);
         include_once APPLICATIONPATH . '/libraries/messages_'.self::$lang.'.php';
         if (self::$msgs === null) return null;
         if(isset($get['error']))
